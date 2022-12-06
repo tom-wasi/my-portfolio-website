@@ -1,0 +1,9 @@
+﻿@page
+@using TomaszWasielewski.Homepage.Components;
+@model ProjectsLayout
+@{
+    ViewData["Title"] = "My Projects";
+}
+
+@(await Html.RenderComponentAsync<ProjectList>(RenderMode.ServerPrerendered))
+<script src = "_framework/blazor.server.js"></script>

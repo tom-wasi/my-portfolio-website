@@ -1,0 +1,23 @@
+﻿[
+  {
+    "Id": "escape-room-app",
+    "img": "images/era.png",
+    "Url": "https://github.com/tom-wasi/EscapeRoomManagerApp",
+    "Title": "Escape Room Management Application",
+    "Description": "An app that let's you manage multiple escape games at once in one spot"
+  },
+  {
+    "Id": "car-rental-app",
+    "img": "images/car.jpg",
+    "Url": "https://github.com",
+    "Title": "Car Rental Application",
+    "Description": "App that simulates a car rental company applications backend"
+  },
+  {
+    "Id": "this-website",
+    "img": "",
+    "Url": "https://github.com",
+    "Title": "This very website",
+    "Description": "The source code of this website, which was writen using ASP.NET Core and RazorPages"
+  }
+] 

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\TomaszWasielewski.Homepage.props" />
+</Project>

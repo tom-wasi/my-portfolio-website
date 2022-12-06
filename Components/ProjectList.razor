@@ -1,0 +1,75 @@
+﻿@using System.Diagnostics;
+@using TomaszWasielewski.Homepage.Models
+@using TomaszWasielewski.Homepage.Services
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Html
+
+@inject JsonFileProjectService ProjectService
+
+<div class="card-columns">
+    @foreach (var project in ProjectService.GetProjects())
+    {
+        <div class="card">
+            <div class="card-img" style="background-image: url('@project.Image');">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@project.Title</h5>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">
+                    <button @onclick="(e => SelectProject(project?.Id ?? string.Empty))"
+                        data-toggle="modal" data-target="#projectModal" class="btn btn-primary">
+                        <a href='@project.URL'> Show project on GitHub</a>
+                    </button>
+
+                </small>
+            </div>
+        </div>
+        }        
+    </div>
+
+
+
+<div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        @if (selectedProject != null)
+        {
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productTitle">@selectedProject.Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('@selectedProject.Image');">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@selectedProject.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code
+{
+    Project? selectedProject;
+    string? selectedProjectId;
+    string? selectedProjectUrl;
+
+    void SelectProject(string projectId)
+    {
+        selectedProjectId = projectId;
+        selectedProject = ProjectService.GetProjects().First(x => x.Id == projectId);
+    }
+    void SelectProjectURL(string projectUrl)
+     {
+        selectedProjectUrl = projectUrl;
+        selectedProject = ProjectService.GetProjects().First(x => x.URL == projectUrl);
+        
+     }
+}
